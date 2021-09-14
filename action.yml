@@ -1,14 +1,8 @@
 name: 'Tekton Tasks Linter'
 description: 'Lints scripts defined as Tekton Tasks using official linter'
-inputs:
-  directory: 
-    description: 'target directory to search for tekton tasks'
-    required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  env:
-    DIRECTORY: ${{ inputs.directory }}
 branding:
   icon: cloud
   color: red

@@ -1,4 +1,4 @@
 #!/bin/bash
 set -e
 
-grep -wln "kind: Task" ${DIRECTORY} | xargs -I {} catlin lint script {} 
+find "$(pwd)" \( -name .git \) -prune -o -type f \( -name '*.yaml' -o -name '*.yml' \) -exec grep -Hwln "kind: Task" {} \; | xargs -I {} catlin lint script {} 
