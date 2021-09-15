@@ -1,0 +1,26 @@
+## Tekton Task Linter as GitHub Action
+
+Runs https://github.com/tektoncd/plumbing/tree/d6406ebeb4b4b9833edc12f39f00ab5432266894/catlin[`catlin`] linter developed by Tekton team to validate all your `Task`s  in the project.
+
+
+### Usage
+
+[source,yaml]
+----
+name: tekton
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+jobs:
+  catlin:
+    name: tekton-lint
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+      - name: Validate Tekton Tasks
+        uses: bartoszmajsak/tekton-task-linter-action@v1
+----
